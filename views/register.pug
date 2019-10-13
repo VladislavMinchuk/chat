@@ -6,14 +6,17 @@ block content
     .container
       .row.justify-content-center
         .col-md-8.col-lg-6.py-5
-          form(method="POST" action="/login").p-4.border.bg-info.text-white
-            h1.text-center Sign In
+          form(method="POST" action="register").p-4.border.bg-info.text-white
+            h1.text-center Sign Up
             .form-group
               label(for="name-input") Name
               input(id="name-input" type="text" name="username" required).form-control
             .form-group
               label(for="password-input") Password
               input(id="password-input" type="password" name="password" required).form-control
+            .form-group
+              label(for="confirm-password-input") Confirm password
+              input(id="confirm-password-input" type="password" name="password2" required).form-control
             .d-md-flex.justify-content-md-between
-              button(type="submit").btn.btn-outline-light Login
-              a(href="/register").btn.btn-light Sign Up
+              button(type="submit").btn.btn-outline-light Sign Up
+              a(href="/login").btn.btn-light Sign In

@@ -4,9 +4,14 @@ const User = require('../models/user');
 const HttpError = require('../error');
 const ObjectID = require('mongodb').ObjectID;
 const loginControl = require('../controllers/login');
+const registerControl = require('../controllers/register');
+const checkForm = require('../middleware/checkForm');
 
 router.get('/login', loginControl.getPage);
-router.get('/login', loginControl.login);
+router.post('/login', loginControl.login);
+
+router.get('/register', registerControl.getPage);
+router.post('/register', checkForm, registerControl.registUser);
 
 router.get('/session', (req, res) => {
   req.session.visits = req.session.visits + 1 || 1;
