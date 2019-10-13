@@ -13,14 +13,12 @@ const app = express();
 app.use(bodyParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(
-  session({
-    secret: config.session.secret,
-    key: config.session.key,
-    cookie: config.session.cookie,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  })
-);
+app.use(session(config.session));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.static(path.join(__dirname, 'public')));
 
 // pages routing
 app.use(require('./routers/index'));

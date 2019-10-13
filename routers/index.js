@@ -3,6 +3,10 @@ const router = express.Router();
 const User = require('../models/user');
 const HttpError = require('../error');
 const ObjectID = require('mongodb').ObjectID;
+const loginControl = require('../controllers/login');
+
+router.get('/login', loginControl.getPage);
+router.get('/login', loginControl.login);
 
 router.get('/session', (req, res) => {
   req.session.visits = req.session.visits + 1 || 1;
